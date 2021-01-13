@@ -11,9 +11,9 @@ const {
 
 concatAllSubtitles()
   .then(changeSpacesToSemicolon)
-  .then((phrases) => removeCharFromWords(/[^a-zA-Z;]/g, phrases))
-  .then((phrases) => removeCharFromWords(/<i>|<\/i>/g, phrases))
-  .then((phrases) => removeCharFromWords(/^<font.*/g, phrases))
+  .then(removeCharFromWords(/[^a-zA-Z;]/g))
+  .then(removeCharFromWords(/<i>|<\/i>/g))
+  .then(removeCharFromWords(/^<font.*/g))
   .then(splitBySemicolon)
   .then(allWordsToLowerCase)
   .then(removeEmptyValuesFromArray)
