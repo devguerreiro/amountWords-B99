@@ -13,3 +13,4 @@ Read all subtitles files and return a list of words most said in a random season
 - Filter and remove unwished chars in a phrases :heavy_check_mark:
 - Order the words by most said :heavy_check_mark:
 - Save the result in a JSON file :heavy_check_mark:
+- Add validation e exceptions ❌
