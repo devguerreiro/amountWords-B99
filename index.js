@@ -1,30 +1,21 @@
 const {
-  getPhrases,
+  concatAllSubtitles,
   changeSpacesToSemicolon,
-  removeChar,
+  removeCharFromWords,
   removeEmptyValuesFromArray,
   allWordsToLowerCase,
   splitBySemicolon,
   wordsByPopularity,
+  saveResultToJSON,
 } = require("./functions");
 
-getPhrases()
+concatAllSubtitles()
   .then(changeSpacesToSemicolon)
-  .then((phrases) => removeChar(/-/g, phrases))
-  .then((phrases) => removeChar(/,/g, phrases))
-  .then((phrases) => removeChar(/'+/g, phrases))
-  .then((phrases) => removeChar(/\?/g, phrases))
-  .then((phrases) => removeChar(/\./g, phrases))
-  .then((phrases) => removeChar(/_/g, phrases))
-  .then((phrases) => removeChar(/"+/g, phrases))
-  .then((phrases) => removeChar(/\%/g, phrases))
-  .then((phrases) => removeChar(/♪/g, phrases))
-  .then((phrases) => removeChar(/[0-9]*/g, phrases))
-  .then((phrases) => removeChar(/\[|\]/g, phrases))
-  .then((phrases) => removeChar(/<i>|<\/i>/g, phrases))
-  .then((phrases) => removeChar(/^<font.*/g, phrases))
+  .then((phrases) => removeCharFromWords(/[^a-zA-Z;]/g, phrases))
+  .then((phrases) => removeCharFromWords(/<i>|<\/i>/g, phrases))
+  .then((phrases) => removeCharFromWords(/^<font.*/g, phrases))
   .then(splitBySemicolon)
   .then(allWordsToLowerCase)
   .then(removeEmptyValuesFromArray)
   .then(wordsByPopularity)
-  .then(console.log);
+  .then(saveResultToJSON);
